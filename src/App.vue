@@ -17,6 +17,7 @@ import NavBar from "./components/NavBar.vue";
 import SearchBar from "./components/SearchBar.vue";
 import Card from "./components/Card.vue";
 import Footer from "./components/Footer.vue";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "App",
   components: {
@@ -24,6 +25,14 @@ export default {
     SearchBar,
     Card,
     Footer,
+  },
+  methods: {
+    ...mapActions(["fetchJobs"]),
+  },
+  computed: mapGetters(["allJobs"]),
+  created() {
+    this.fetchJobs();
+    console.log("Created");
   },
 };
 </script>
